@@ -48,15 +48,15 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextDescription">
 
         <RadioButton
-            android:id="@+id/radioButton1"
+            android:id="@+id/radioButtonLow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@android:color/holo_red_light"
+            android:background="@android:color/holo_green_light"
             android:text="@string/priority_1" />
 
         <RadioButton
-            android:id="@+id/radioButton2"
+            android:id="@+id/radioButtonMedium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -64,12 +64,12 @@
             android:text="@string/priority_2" />
 
         <RadioButton
-            android:id="@+id/radioButton3"
+            android:id="@+id/radioButtonHigh"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:checked="true"
-            android:background="@android:color/holo_green_light"
+            android:background="@android:color/holo_red_light"
             android:text="@string/priority_3" />
     </RadioGroup>
 
@@ -83,7 +83,6 @@
         android:background="@android:color/holo_purple"
         android:text="@string/button_save_note"
         android:textColor="@android:color/background_light"
-        android:onClick="onClickSaveNote"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroupPriority" />

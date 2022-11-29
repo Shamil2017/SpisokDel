@@ -6,7 +6,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.spisokdel"
+        applicationId "com.example.spisokdelsecond"
         minSdk 24
         targetSdk 33
         versionCode 1

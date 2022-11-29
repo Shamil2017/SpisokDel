@@ -1,4 +1,4 @@
-package com.example.spisokdel;
+package com.example.spisokdelsecond;
 
 import org.junit.Test;
 

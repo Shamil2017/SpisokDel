@@ -1,8 +1,7 @@
-package com.example.spisokdel;
+package com.example.spisokdelsecond;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,6 +13,10 @@ public class AddNoteActivity extends AppCompatActivity {
     private EditText editTextTitle;
     private EditText editTextDescription;
     private RadioGroup radioGroupPriority;
+    private RadioButton radioButtonLow;
+    private RadioButton radioButtonMedium;
+    private RadioButton radioButtonHigh;
+
     private Button buttonSaveNote;
 
     private Database database = Database.getInstance();
@@ -25,6 +28,10 @@ public class AddNoteActivity extends AppCompatActivity {
         editTextTitle = findViewById(R.id.editTextTitle);
         editTextDescription = findViewById(R.id.editTextDescription);
         radioGroupPriority = findViewById(R.id.radioGroupPriority);
+        radioButtonLow = findViewById(R.id.radioButtonLow);
+        radioButtonMedium  =findViewById(R.id.radioButtonMedium);
+        radioButtonHigh  =findViewById(R.id.radioButtonHigh);
+
         buttonSaveNote = findViewById(R.id.buttonSaveNote);
         buttonSaveNote.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,19 +40,28 @@ public class AddNoteActivity extends AppCompatActivity {
                 String description = editTextDescription.getText().toString().trim();
                 int radioButtonId = radioGroupPriority.getCheckedRadioButtonId();
                 RadioButton radioButton = findViewById(radioButtonId);
-                int priority = Integer.parseInt(radioButton.getText().toString());
+                int priority = getPriority();
                 int id = database.getNotes().size();
 
                 Note note = new Note(id,title,priority);
                 database.add(note);
-                /*MainActivity.notes.add(note);
-                Intent intent = new Intent(getBaseContext(),
-                        MainActivity.class);
-                startActivity(intent);*/
+
                 finish();
             }
         });
 
+    }
+
+    private int getPriority()
+    {
+        int priority = 2;
+        if (radioButtonLow.isChecked())
+            priority = 0;
+        else if (radioButtonMedium.isChecked())
+            priority = 1;
+        else if (radioButtonHigh.isChecked())
+            priority = 2;
+        return  priority;
     }
 
 }

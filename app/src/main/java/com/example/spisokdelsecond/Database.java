@@ -1,4 +1,4 @@
-package com.example.spisokdel;
+package com.example.spisokdelsecond;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -11,8 +11,10 @@ public class Database {
 
     public static Database getInstance()
     {
-        if (instance == null)
-            return new Database();
+        if (instance == null) {
+            instance = new Database();
+            return instance;
+        }
         else
             return instance;
     }
