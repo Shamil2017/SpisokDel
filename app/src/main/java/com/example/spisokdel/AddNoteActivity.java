@@ -16,6 +16,8 @@ public class AddNoteActivity extends AppCompatActivity {
     private RadioGroup radioGroupPriority;
     private Button buttonSaveNote;
 
+    private Database database = Database.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +34,15 @@ public class AddNoteActivity extends AppCompatActivity {
                 int radioButtonId = radioGroupPriority.getCheckedRadioButtonId();
                 RadioButton radioButton = findViewById(radioButtonId);
                 int priority = Integer.parseInt(radioButton.getText().toString());
-                Note note = new Note(1,title,priority);
-                MainActivity.notes.add(note);
+                int id = database.getNotes().size();
+
+                Note note = new Note(id,title,priority);
+                database.add(note);
+                /*MainActivity.notes.add(note);
                 Intent intent = new Intent(getBaseContext(),
                         MainActivity.class);
-                startActivity(intent);
+                startActivity(intent);*/
+                finish();
             }
         });
 
